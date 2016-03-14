@@ -62,7 +62,8 @@ function initMap() {
         zoom: 11
     });
 
-    drawCircle();
+    geocoder = new google.maps.Geocoder();
+    /*drawCircle();
 
     destinations = [];
     points = [];
@@ -86,7 +87,7 @@ function initMap() {
         distance = new google.maps.DistanceMatrixService;
 
     console.log('Getting distances and durations');
-    getInZone(0);
+    getInZone(0);*/
 }
 
 function getInZone(a) {
@@ -300,3 +301,28 @@ function sortBounds(bounds) {
 
     return boundsToReturn;
 }
+
+function setMapCenter(address) {
+    geocoder.geocode({'address': address}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            $("#center").slideUp('fast', function() {
+                showOptionsBox();
+            });
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+}
+
+function showOptionsBox() {
+    $('#options').slideDown('fast');
+}
+
+$(document).ready(function() {
+    $('#center').hide();
+    $('#center_submit').click(function() {
+        var center_address = $('#center_input').val();
+        setMapCenter(center_address);
+    }) ;
+});

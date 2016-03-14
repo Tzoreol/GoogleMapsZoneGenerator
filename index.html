@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.blue-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
         <link rel="stylesheet" type="text/css" href="map.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <script type="text/javascript" src="map.js"></script>
     </head>
     <body>
-        <div id="map"></div>
 
-        <!-- Replace the value of the key parameter with your own API key. -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDJCN-rJZxurz_K8IUpVwVQO1_SIzS9XQ&callback=initMap" async defer></script>
+        <div id="map"></div>
+        <div id="center">
+            <label for="center_input">Center : </label>
+            <input type="text" id="center_input" />
+            <input type="button" id="center_submit" value="OK" />
+        </div>
+        <div id="options">
+            <h3>Options</h3>
+            <p>
+                <label>Criterias : </label>
+                <input type="number" id="options_criterias_meters" /> meters
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="and">
+                    <input type="radio" id="and" class="mdl-radio__button" name="andor" value="and" checked>
+                    <span class="mdl-radio__label">and</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="or">
+                    <input type="radio" id="or" class="mdl-radio__button" name="andor" value="or">
+                    <span class="mdl-radio__label">or</span>
+                </label>
+            </p>
+            <p>
+                <input type="number" id="options_criterias_minutes" /> minutes
+            </p>
+        </div>
+        <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDJCN-rJZxurz_K8IUpVwVQO1_SIzS9XQ&callback=initMap" async defer></script>-->
+        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
     </body>
 </html>
