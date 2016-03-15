@@ -52,8 +52,13 @@ h3 {
 }
 
 #options_criterias_meters {
-    margin-left: 15px;
+    margin-left: 5px;
     margin-right: 10px;
+    width: 15%;
+}
+
+#options_criterias_minutes {
+    margin-left: 5px;
     width: 15%;
 }
 
